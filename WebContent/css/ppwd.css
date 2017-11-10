@@ -1,0 +1,38 @@
+.pms{
+    width: 100%;
+}
+
+.pmst{
+    margin: auto;
+    color: black;
+    font-weight: 600;
+    margin-top: 50px;
+}
+
+.pmst td{
+    height: 30px;
+}
+
+.pmstj td{
+    text-align: center;
+    height: 100px;
+    line-height: 100px;
+}
+
+.pmstj td input{
+    width: 80px;
+    height: 30px;
+    cursor: pointer;
+}
+.tmsgxd{
+    height: 30px;
+    line-height: 30px;
+    color: black;
+    font-weight: 600;
+    font-family: 楷体;
+}
+
+.tmsgtop {
+    height: 50px;
+    border-bottom: 10px dashed #d6ffd4;
+}

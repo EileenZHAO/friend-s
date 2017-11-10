@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace为唯一id，一般命名为包名+文件名 -->
+<mapper namespace="com.iaecomption.dao.ContestantDao">
+	<!-- 回收策略 自动刷新时间60s 最多缓存512个对象 只读 -->
+	<cache eviction="FIFO" flushInterval="100" size="512" readOnly="false">
+
+	</cache>
+	
+	<!-- 参赛者对象映射 -->
+	<resultMap type="com.iaecomption.pojo.Contestant" id="Contestant">
+		<id column="c_account" property="c_account" />
+		<result column="password" property="password" />
+		<result column="email" property="email" />
+		<result column="portrait" property="portrait" />
+		<result column="retime" property="retime" />
+		<result column="source" property="source" />
+		<!-- 配置ContestantInfo类映射 -->
+		<association property="cInfo" javaType="com.iaecomption.pojo.ContestantInfo">
+			<id column="ci_id" property="ci_id" />
+			<result column="c_account" property="c_account" />
+			<result column="contacts" property="contacts" />
+			<result column="type" property="type" />
+			<result column="position" property="position" />
+			<result column="phone" property="phone" />
+			<result column="qq" property="qq" />
+		</association>
+	</resultMap>
+	
+	<!-- 删除参赛者 -->
+	<delete id="delContestantByAccount" parameterType="java.lang.String">
+	    delete from contestant where c_account=#{account}
+	</delete>
+	
+	<!-- 删除参赛者详情 -->
+	<delete id="delContestantInfoByAccount" parameterType="java.lang.String">
+	    delete from contestant_info where c_account=#{account}
+	</delete>
+	
+	<!-- 模糊查找参赛者 -->
+	<select id="getContestantByLike" resultMap="Contestant" parameterType="java.util.Map">
+	    select * from contestant c left join contestant_info ci on c.c_account=ci.c_account 
+	    where c.c_account like #{msg} or c.email like #{msg} or c.retime like #{msg} or c.source like #{source} 
+	    or ci.contacts like #{msg} or ci.type like #{type} or ci.position like #{msg} or ci.phone like #{msg} 
+	    or ci.qq like #{msg} 
+	</select>
+	
+	<!-- 修改参赛者邮箱 -->
+	<update id="updateContestantemailByAccount" parameterType="java.util.Map">
+	    update contestant set email=#{email} where c_account=#{account}
+	</update>
+	
+	<!-- 修改参赛者详情 -->
+	<update id="updateContestantInfoByAccount" parameterType="java.util.Map">
+	    update contestant_info set contacts=#{contacts},type=#{type},position=#{position},phone=#{phone},qq=#{qq} where c_account=#{account}
+	</update>
+	
+	<!-- 修改密码 -->
+	<update id="updateContestantPwd" parameterType="java.util.Map">
+	    update contestant set `password`=#{pwd} where c_account=#{account}
+	</update>
+	
+	<!-- 修改头像 -->
+	<update id="updatePortrait" parameterType="java.util.Map">
+	    update contestant set portrait=#{portrait} where c_account=#{account}
+	</update>
+</mapper>

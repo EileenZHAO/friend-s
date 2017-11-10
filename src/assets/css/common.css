@@ -1,0 +1,135 @@
+#app{
+  width: 100%;
+  position: relative;
+}
+/*登录组件*/
+.login-content{
+  width: 100%;
+  overflow: hidden;
+  background-image: url(".././images/login-bg.jpg");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  padding-top: 30%;
+}
+.login-content img{
+  width: 7rem;
+  text-align: center;
+}
+.login-logo p{
+  padding-top: 1rem;
+  color: white;
+  font-size: 2rem;
+}
+.login-input{
+  width: 80%;
+  margin: auto;
+  margin-top: 2rem;
+}
+.login-input>div{
+  width: 100%;
+  margin-top: 4rem;
+  position: relative;
+}
+.login-ip i {
+  color: white;
+  font-size: 2.8rem;
+  position: absolute;
+  left: 1.6rem;
+  bottom: 0.6rem;
+}
+.login-ip input{
+  font-size: 1.6rem;
+  margin-left: -3px;
+  color: white;
+  border: 0;
+  border-radius: 50px;
+  background-color: rgba(0,0,0,0.3);
+  width: 70%;
+  text-align: left;
+  padding: 1.6rem 0 1.6rem 30%;
+  margin-top: -20px !important;
+}
+.login-ip input::-webkit-input-placeholder {
+  color: white;
+  font-size: 1.6rem;
+}
+.login-ip input:-moz-placeholder {
+  color: white;
+  font-size: 1.6rem;
+}
+.login-ip input::-moz-placeholder {
+  color: white;
+  font-size: 1.6rem;
+}
+.login-ip input:-ms-input-placeholder {
+  color: white;
+  font-size: 1.6rem;
+}
+.login-check{
+  text-align: left;
+  margin: auto;
+  margin-left: 5rem;
+  color: white;
+  margin-top: 1.5rem !important;
+}
+.login-check i{
+  font-style: normal;
+}
+.login-check input{
+  background-color: rgba(0,0,0,0.3);
+  width: 2rem;
+  height: 1.5rem;
+  vertical-align: middle;
+}
+.login-check label{
+  display: block;
+  width: 70%;
+  line-height: 2rem;
+  vertical-align: middle;
+}
+.login-btn{
+  width: 40% !important;
+  background-color: rgb(076,142,254);
+  margin-top: 5rem;
+  border-radius: 25px;
+}
+.login-footer{
+  margin-top: 5rem;
+  text-align: center;
+  color: white;
+  font-size: 1.6rem;
+  padding-bottom: 3rem;
+}
+.login-argument-content{
+  padding: 1rem;
+  width: 80%;
+  background-color: white;
+  height: 350px;
+  overflow-y: scroll;
+  color: black;
+  position: fixed;
+  top: 10%;
+  left: 10%;
+  z-index: 9999;
+}
+/*主页*/
+.index-header{
+  /*width: 100%;*/
+  background-color: rgb(076,142,254);
+  padding: 1.5rem;
+  text-align: center;
+}
+.index-header span{
+  display: inline-block;
+  font-size: 2rem;
+  color: white;
+}
+.index-header span:nth-of-type(1){
+  float: left;
+
+}
+.index-header span:nth-of-type(3){
+  float: right;
+}
+
+

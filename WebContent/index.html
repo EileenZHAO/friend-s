@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>创新创业大赛首页</title>
+<link rel="icon" href="images/icon.png">
+<link rel="stylesheet" type="text/css" href="css/style.css"
+	media="screen" />
+<link rel="stylesheet" href="css/styles.css" type="text/css"
+	media="screen" />
+<link rel="stylesheet" href="css/index.css" type="text/css"
+	media="screen" />
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script src="layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/jquery.banner.revolution.min.js"></script>
+<script type="text/javascript" src="js/banner.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</head>
+<body>
+
+	<!--导航栏开始-->
+	<div class="index_nav">
+		<div class="index_nav_left">
+			<img src="images/logo.png">
+		</div>
+		<div class="index_nav_right">
+			<div class="index_nav_tel">
+				<span class="ints">报名热线</span> <img src="images/tel.png"> <span>18408283260</span>
+			</div>
+			<div class="index_nav_lr">
+				<span class="inrl">登录</span> <span class="inrr">注册</span>
+			</div>
+		</div>
+	</div>
+	<!--导航栏结束-->
+	<hr size="5">
+	<!--轮播开始-->
+	<div>
+		<div id="wrapper">
+			<div class="fullwidthbanner-container">
+				<div class="fullwidthbanner">
+					<ul>
+						<li data-transition="3dcurtain-horizontal" data-slotamount="15"
+							data-masterspeed="300"><img src="images/slides/slide1.jpg"
+							alt="" /></li>
+						<li data-transition="3dcurtain-vertical" data-slotamount="15"
+							data-masterspeed="300" data-link="#"><img
+							src="images/slides/slide2.jpg" alt="" /></li>
+						<li data-transition="papercut" data-slotamount="15"
+							data-masterspeed="300" data-link="#"><img
+							src="images/slides/slide3.jpg" alt="" /></li>
+						<li data-transition="turnoff" data-slotamount="15"
+							data-masterspeed="300"><img src="images/slides/slide4.jpg"
+							alt="" /></li>
+						<li data-transition="flyin" data-slotamount="15"
+							data-masterspeed="300"><img src="images/slides/slide5.jpg"
+							alt="" /></li>
+						<li data-transition="flyin" data-slotamount="15"
+							data-masterspeed="300"><img src="images/slides/slide6.jpg"
+							alt="" /></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--轮播开始-->
+
+	<!--正文开始-->
+	<div class="icontent">
+		<!--三大图标开始-->
+		<div class="case-content">
+			<!-- 第一个-->
+			<div class="case-item">
+				<div class="ih-item circle effect1">
+					<a href="#inews">
+						<div class="spinner"></div>
+						<div class="img">
+							<img src="images/new.png" height=200 width=200>
+						</div>
+						<div class="info">
+							<div class="info-back">
+								<h3>新闻中心</h3>
+
+								<p>新闻资讯，一路与你同行！</p>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<!-- 第二个-->
+			<div class="case-item">
+				<div class="ih-item circle effect1">
+					<a href="#idysnc">
+						<div class="spinner"></div>
+						<div class="img">
+							<img src="images/notice.png" height=200 width=200>
+						</div>
+						<div class="info">
+							<div class="info-back">
+								<h3>大赛动态</h3>
+
+								<p>你点，我就告诉你！</p>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<!-- 第三个-->
+			<div class="case-item">
+				<div class="ih-item circle effect1">
+					<a href="#inotice">
+						<div class="spinner"></div>
+						<div class="img">
+							<img src="images/timg.png" height=200 width=200>
+						</div>
+						<div class="info">
+							<div class="info-back">
+								<h3>大赛公告</h3>
+
+								<p>快来了解吧！</p>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<!-- 第四个-->
+			<div class="case-item">
+				<div class="ih-item circle effect1">
+					<a href="news.html?id=-1&type=4" target="_blank">
+						<div class="spinner"></div>
+						<div class="img">
+							<img src="images/production.jpg" height=200 width=200>
+						</div>
+						<div class="info">
+							<div class="info-back">
+								<h3>作品展示</h3>
+
+								<p>更多精彩等你到来！</p>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--三大图标结束-->
+	</div>
+	<!--动态条目区开始-->
+	<div>
+		<div id="idysnc" class="inews">
+			<h1>大赛动态</h1>
+			<hr>
+			<div>
+				<table class="tdysnc dynamicmsg" cellpadding="0" cellspacing="0">
+					<!-- 动态信息 -->
+				</table>
+			</div>
+		</div>
+	</div>
+	<!--动态条目区结束-->
+	<!--公告条目区开始-->
+	<div>
+		<div id="inotice" class="inews">
+			<h1>大赛公告</h1>
+			<hr>
+			<div>
+				<table class="tdysnc noticemsg" cellpadding="0" cellspacing="0">
+					<!-- 公告信息 -->
+				</table>
+			</div>
+		</div>
+	</div>
+	<!--公告条目区结束-->
+	<!--新闻条目区开始-->
+	<div>
+		<div id="inews" class="inews">
+			<h1>新闻中心</h1>
+			<hr>
+            <!-- 追加新闻 -->
+		</div>
+		<div class="getmore">
+			<img class="getmoreimg" src="images/indexmore.jpg">
+		</div>
+	</div>
+	<!--新闻条目区结束-->
+	<!--正文结束-->
+	<hr size="5">
+	<!--尾部开始-->
+	<div class="footerm">
+		<div class="footer">
+			<div class="foot">
+				<div class="foot_left">
+					地址：四川工商学院 | 邮编：645250 | 传真：88656371 | 报名咨询邮箱：education@scgsxy.com<br>
+					Copyright @ 2016-2017 四川工商学院 保留一切权利 川ICP备05034026号
+				</div>
+				<div class="foot_right">
+					<a href="#">关于我们</a> | <a href="#">版权声明</a> | <a
+						href="contact.html" target="view_window">联系方式</a>
+				</div>
+			</div>
+			<div style="width: 300px; margin: 0 auto; padding: 10px 0;">
+				<a target="_blank"
+					href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010202007133"
+					style="display: inline-block; text-decoration: none; height: 20px; line-height: 20px;">
+					<img src="images/beian.png" style="float: left;">
+
+					<p
+						style="float: left; height: 20px; line-height: 20px; margin: 0px 0px 0px 5px; color: #939393;">川公网安备
+						11010202007133号</p>
+				</a>
+			</div>
+		</div>
+	</div>
+	<!--尾部结束-->
+	<!--右边侧边栏制作开始-->
+	<div class="irrules">
+		<div class="irrusme">参&nbsp;赛&nbsp;介&nbsp;绍</div>
+		<div class="itridition">
+			<div>
+				<a href="conditions.html">参赛条件</a>
+			</div>
+			<div>
+				<a href="arrange.html">赛程安排</a>
+			</div>
+			<div>
+				<a href="contact.html">联系我们</a>
+			</div>
+		</div>
+	</div>
+	<!--右边侧边栏制作结束-->
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>团队基本信息</title>
+<link rel="stylesheet" href="../layui/css/layui.css" media="all">
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script src="../layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript">
+	$(function() {
+		if (parent.type == 1) {
+			getDynamicMessage();
+		} else if (parent.type == 2) {
+			getInformMessage();
+		}
+	});
+	//获取信息内容
+	function getDynamicMessage() {
+		$.post("../getDynamicById.do", {
+			did : parent.id
+		}, function(data) {
+			$(".message").append(data.content);
+		});
+	}
+
+	//获取信息内容
+	function getInformMessage() {
+		$.post("../getInformContentById.do", {
+			iid : parent.id
+		}, function(data) {
+			$(".message").append(data.content);
+		});
+	}
+</script>
+<style type="text/css">
+.message {
+	font-size: 15px;
+}
+
+.message img {
+	margin-left:5%;
+	margin-right:5%;
+}
+</style>
+</head>
+<body>
+	<div class="message"></div>
+</body>
+</html>

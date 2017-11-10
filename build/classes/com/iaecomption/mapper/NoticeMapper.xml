@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace为唯一id，一般命名为包名+文件名 -->
+<mapper namespace="com.iaecomption.dao.NoticeDao">
+	<!-- 回收策略 自动刷新时间60s 最多缓存512个对象 只读 -->
+	<cache eviction="FIFO" flushInterval="100" size="512" readOnly="false">
+
+	</cache>
+	<!-- 公告对象映射 -->
+	<resultMap type="com.iaecomption.pojo.Notice" id="Notice">
+		<id column="n_id" property="n_id" />
+		<result column="title" property="title" />
+		<result column="c_url" property="c_url" />
+		<result column="time" property="time" />
+		<result column="account" property="account" />
+	</resultMap>
+	
+	<!-- 获取所有公告 -->
+	<select id="getAllNotice" resultMap="Notice">
+	    select * from notice order by time desc
+	</select>
+	
+	<!-- 获取公告地址 -->
+	<select id="getNoticeById" resultMap="Notice" parameterType="java.lang.String">
+	    select * from notice where n_id=#{nid}
+	</select>
+	
+	<!-- 增加公告 -->
+	<insert id="addNotice" parameterType="java.util.Map">
+	    insert into notice (title,c_url,time,account) values (#{title},#{curl},#{time},#{account})
+	</insert>
+	
+	<!-- 删除公告 -->
+	<delete id="delNoticeById" parameterType="java.lang.String">
+	    delete from notice where n_id=#{nid}
+	</delete>
+	
+
+</mapper>

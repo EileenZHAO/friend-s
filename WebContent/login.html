@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <link rel="icon" href="images/icon.png">
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen"/>
+    <link rel="stylesheet" href="css/index.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="css/login.css">
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script src="layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+<!--导航栏开始-->
+<div class="index_nav">
+    <div class="index_nav_left">
+        <img src="images/logo.png">
+    </div>
+    <div class="index_nav_right">
+        <div class="index_nav_tel">
+            <span class="ints">报名热线</span>
+            <img src="images/tel.png">
+            <span>18408283260</span>
+        </div>
+        <div class="index_nav_lr">
+            <span class="inrr">注册</span>
+            <span class="backindex">首页</span>
+        </div>
+    </div>
+</div>
+<!--导航栏结束-->
+<hr size="5">
+<!--登录开始-->
+<div class="mid">
+    <div class="midd">
+        <div class="mtop">
+            欢迎登陆
+        </div>
+        <div class="mbo">
+                <div class="mbh">账号密码登陆</div>
+                <div class="mbt">
+                    <select class="mbti ltype">
+                        <option>选择用户类型</option>
+                        <option value="1">参赛者</option>
+                        <option value="0">工作者</option>
+                    </select>
+                </div>
+                <div class="mbt"><input class="mbti laccount" type="text" name="" placeholder="请输入用户名"></div>
+                <div class="mbt"><input class="mbti lpwd" type="password" name="" placeholder="请输入密码"></div>
+                <div class="mbtt">
+                    <input class="mbtii lvalidate" placeholder="请输入验证码">
+                    <img id="vimg" class="im8" src="getVarlidate.do">
+                    <a class="aaa" href="javascript:change()">看不清，换一张！</a>
+                </div>
+                <div class="mbt"><input class="mbtb" type="button" name="" value="登陆" onclick="login()"></div>
+        </div>
+    </div>
+</div>
+<!--登录结束-->
+<hr size="5">
+<!--尾部开始-->
+<div class="footerm">
+		<div class="footer">
+			<div class="foot">
+				<div class="foot_left">
+					地址：四川工商学院 | 邮编：645250 | 传真：88656371 | 报名咨询邮箱：education@scgsxy.com<br>
+					Copyright @ 2016-2017 四川工商学院 保留一切权利 川ICP备05034026号
+				</div>
+				<div class="foot_right">
+					<a href="#">关于我们</a> | <a href="#">版权声明</a> | <a
+						href="contact.html" target="view_window">联系方式</a>
+				</div>
+			</div>
+			<div style="width: 300px; margin: 0 auto; padding: 10px 0;">
+				<a target="_blank"
+					href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010202007133"
+					style="display: inline-block; text-decoration: none; height: 20px; line-height: 20px;">
+					<img src="images/beian.png" style="float: left;">
+
+					<p
+						style="float: left; height: 20px; line-height: 20px; margin: 0px 0px 0px 5px; color: #939393;">川公网安备
+						11010202007133号</p>
+				</a>
+			</div>
+		</div>
+	</div>
+<!--尾部结束-->
+</body>
+</html>

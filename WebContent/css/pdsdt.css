@@ -1,0 +1,58 @@
+.tmsgtop {
+    height: 50px;
+    border-bottom: 10px dashed #d6ffd4;
+}
+
+.tmsgxd{
+    height: 30px;
+    line-height: 30px;
+    color: black;
+    font-weight: 600;
+    font-family: 楷体;
+}
+
+.tptz{
+    width: 99%;
+}
+
+.tptz tr td{
+    border-bottom: 1px dashed #e2e2df;
+    height: 30px;
+}
+
+.tptz tr:hover{
+    background-color: #f4ffef;
+}
+
+.dstzxx{
+    margin-top: 20px;
+}
+
+.dstzxxt{
+    font-size: 10px;
+}
+
+.dstztime{
+    color: #9b9999;
+    text-align: right;
+}
+
+.dstztt{
+    width: 80px;
+    color: #55d740;
+    cursor: pointer;
+}
+
+.dstztr{
+    color: #9b9999;
+    cursor: pointer;
+}
+
+.tpimg{
+	 width: 30px;
+    text-align: center;
+}
+
+.page {
+	text-align: center;
+}

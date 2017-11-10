@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>用户密码修改</title>
+<link rel="stylesheet" type="text/css" href="../css/ppwd.css"
+	media="screen" />
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script src="../layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/ppwd.js"></script>
+</head>
+<body>
+	<div class="tmsgtop">
+		<div class="tmsgxd">>>用户密码修改</div>
+	</div>
+	<div class="pms">
+		<table class="pmst" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>用户名：</td>
+				<td class="account"></td>
+			</tr>
+			<tr>
+				<td>邮箱：</td>
+				<td class="email"></td>
+			</tr>
+			<tr>
+				<td>赛事组别：</td>
+				<td class="type"></td>
+			</tr>
+			<tr>
+				<td>旧密码：</td>
+				<td><input type="password" class="oldpwd" value="" placeholder="请输入旧密码..."></td>
+			</tr>
+			<tr>
+				<td>新密码：</td>
+				<td><input type="password" class="newpwd" value="" placeholder="请输入新密码..."></td>
+			</tr>
+			<tr>
+				<td>确认新密码：</td>
+				<td><input type="password" class="rnewpwd" value="" placeholder="请再次输入密码..."></td>
+			</tr>
+			<tr class="pmstj">
+				<td colspan="2"><input type="button" onclick="midifyPwd()" value="修改"> <input
+					type="button" class="back" value="返回"></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

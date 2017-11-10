@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- 开启注解 -->
+	<context:component-scan base-package="com.iaecomption.dao"></context:component-scan>
+
+	<!-- JdbcTemplate类 -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+		p:dataSource-ref="dataSource"></bean>
+
+	<!-- 加载 数据库属性集文件 -->
+	<context:property-placeholder location="classpath:jdbc.properties" />
+
+	<!-- 数据源配置DataSource -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${mysql.driverclass}"></property>
+		<property name="url" value="${mysql.jdbcurl}"></property>
+		<property name="username" value="${mysql.user}"></property>
+		<property name="password" value="${mysql.password}"></property>
+		<property name="maxActive" value="${mysql.maxActive}"></property>
+		<property name="maxIdle" value="${mysql.maxIdle}"></property>
+		<property name="maxWait" value="${mysql.maxWait}"></property>
+	</bean>
+
+	<!-- 事务控制管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		p:dataSource-ref="dataSource"></bean>
+
+	<!-- AOP建议 -->
+	<aop:config>
+		<aop:pointcut expression="execution(* com.iaecomption.service.*.*(..))"
+			id="serviceMethod" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethod" />
+	</aop:config>
+
+	<!-- 通知 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="del*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="update*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 配置sqlSessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 数据库连接池 -->
+		<property name="dataSource" ref="dataSource" />
+		<!-- 加载Mybatis全局配置文件 -->
+		<property name="configLocation" value="/WEB-INF/classes/ibtconfig.xml" />
+		<property name="mapperLocations" value="classpath:com/iaecomption/mapper/*.xml"></property>
+	</bean>
+
+	<!-- 配置mapper扫描器 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 扫描包路径，如果需要扫描多个包中间用半角逗号隔开 -->
+		<property name="basePackage" value="com.iaecomption.dao"></property>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
+
+</beans>        

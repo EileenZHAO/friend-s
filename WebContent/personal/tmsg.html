@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>团队基本信息</title>
+<link rel="stylesheet" href="../layui/css/layui.css" media="all">
+<link rel="stylesheet" type="text/css" href="../css/tmsg.css"
+	media="screen" />
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../js/jquery.cityselect.js"></script>
+<script src="../layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/tmsg.js"></script>
+</head>
+<body>
+	<div class="saveTeamMsg">
+		<!--头部开始-->
+		<div class="tmsgtop">
+			<div class="tmsgxd">>>参赛流程</div>
+			<div class="tmsgtopit">
+				<div>
+					<img src="../images/sysset_img1.jpg">
+				</div>
+				<div class="tmsgtopitx" style="color: #ff6b36">基本信息</div>
+			</div>
+			<div class="tmsgtopiti">
+				<img src="../images/sysset_icon.gif">
+			</div>
+
+			<div class="tmsgtopit">
+				<div>
+					<img src="../images/sysset_img3.jpg">
+				</div>
+				<div class="tmsgtopitx">团队信息</div>
+			</div>
+			<div class="tmsgtopiti">
+				<img src="../images/sysset_icon.gif">
+			</div>
+
+			<div class="tmsgtopit">
+				<div>
+					<img src="../images/sysset_img6.jpg">
+				</div>
+				<div class="tmsgtopitx">提交作品</div>
+			</div>
+		</div>
+		<!--头部结束-->
+		<!-- 信息表开始-->
+		<div class="txxt">
+			<table cellpadding="0" cellspacing="0">
+				<tr class="fristtr">
+					<td class="fristtd">团队名：</td>
+					<td><input type="text" class="tname"></td>
+					<td class="threetd">项目名称：</td>
+					<td><input type="text" class="title"></td>
+				</tr>
+				<tr>
+					<td class="fristtd">参赛行业领域：</td>
+					<td><select class="ttts field">
+							<option value="-1">选择行业...</option>
+							<option value="1">电子信息</option>
+							<option value="2">互联网和移动互联网</option>
+							<option value="3">生物医药</option>
+							<option value="4">先进制造</option>
+							<option value="5">新能源和节能环保</option>
+							<option value="6">新材料</option>
+					</select></td>
+					<td class="threetd">项目阶段：</td>
+					<td><select class="ttts stage">
+							<option value="-1">选择项目阶段...</option>
+							<option value="1">创意</option>
+							<option value="2">研发</option>
+							<option value="3">产品开发</option>
+							<option value="4">试运营</option>
+							<option value="5">市场扩展</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td class="fristtd">行政区域：</td>
+					<td colspan="3">
+						<div id="city">
+							<select class="prov"></select> <select class="city"></select> <select
+								class="dist"></select>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="fristtd">众创空间团队：</td>
+					<td colspan="3" class="radioiszc"><select class="ttts iszc">
+							<option value="0">否</option>
+							<option value="1">是</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td class="fristtd">团队成立时间：</td>
+					<td colspan="3">
+						<div class="layui-inline">
+							<input class="layui-input ttime" placeholder="自定义日期格式"
+								onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD',max: laydate.now()})">
+						</div>
+					</td>
+				</tr>
+				<tr class="fristtr">
+					<td class="fristtd">办公地址：</td>
+					<td><input type="text" class="oaddress"></td>
+					<td class="threetd">邮 编：</td>
+					<td><input type="text" class="zcode"></td>
+				</tr>
+				<tr>
+					<td class="fristtd">团队责任人：</td>
+					<td colspan="3">
+						<table>
+							<tr class="fristtr">
+								<td class="fristtd">姓名：</td>
+								<td><input type="text" class="hname"></td>
+								<td class="fristtd">职位：</td>
+								<td><input type="text" class="hposition"></td>
+							</tr>
+							<tr class="fristtr">
+								<td class="fristtd">电话：</td>
+								<td><input type="text" class="hphone"></td>
+								<td class="fristtd">邮箱：</td>
+								<td><input type="text" class="hemail"></td>
+							</tr>
+							<tr>
+								<td class="fristtd">证件类型：</td>
+								<td colspan="3"><select class="ttts ctype">
+										<option value="-1">选择证件类型...</option>
+										<option value="1">身份证</option>
+										<option value="2">军官证</option>
+										<option value="3">护照</option>
+								</select></td>
+							</tr>
+							<tr class="fristtr">
+								<td class="fristtd">证件号码：</td>
+								<td colspan="3"><input type="text" class="id_card"></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr class="fristtr">
+					<td class="fristtd">参赛目的：</td>
+					<td><select class="ttts purpose">
+							<option value="-1">请选择参赛目的...</option>
+							<option value="1">竞争大赛优胜荣誉</option>
+							<option value="2">寻求股权融资机会</option>
+							<option value="3">寻求债权融资机会</option>
+							<option value="4">寻求学习、体验、广泛交流机会</option>
+							<option value="5">寻求政府政策支持</option>
+							<option value="6">自我宣传展示机会</option>
+							<option value="0">其他</option>
+					</select></td>
+					<td class="threetd">队员人数：</td>
+					<td><input type="text" class="number"></td>
+				</tr>
+				<tr>
+					<td class="fristtd">项目简介：</td>
+					<td colspan="3">
+						<form class="layui-form" action="">
+							<textarea class="layui-textarea" id="bianjiqi"
+								style="display: none"></textarea>
+						</form>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<!-- 信息表结束-->
+		<!--底部开始-->
+		<div class="bttomend">*
+			注：若信息都已正确填写并确定保存成功，请务必先点击“提交”按钮提交信息，之后再点击“下一步”进入下一阶段！</div>
+		<div class="bttombtn">
+			<div class="clicksave">保存</div>
+		</div>
+		<!-- 底部结束-->
+	</div>
+	<!-- 隐藏判断 -->
+	<div class="showTeamMsg"></div>
+</body>
+</html>

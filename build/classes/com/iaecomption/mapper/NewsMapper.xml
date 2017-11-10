@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace为唯一id，一般命名为包名+文件名 -->
+<mapper namespace="com.iaecomption.dao.NewsDao">
+	<!-- 回收策略 自动刷新时间60s 最多缓存512个对象 只读 -->
+	<cache eviction="FIFO" flushInterval="100" size="512" readOnly="false">
+
+	</cache>
+	<!-- 新闻对象映射 -->
+	<resultMap type="com.iaecomption.pojo.News" id="News">
+		<id column="ns_id" property="ns_id" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="time" property="time" />
+		<result column="account" property="account" />
+	</resultMap>
+
+	<!-- 新闻图片对象映射 -->
+	<resultMap type="com.iaecomption.pojo.NPicture" id="NPicture">
+		<id column="p_id" property="p_id" />
+		<result column="ns_id" property="ns_id" />
+		<result column="picture" property="picture" />
+		<result column="time" property="time" />
+	</resultMap>
+
+	<!-- 新闻对象映射 -->
+	<resultMap type="com.iaecomption.pojo.News" id="IndexNews">
+		<id column="ns_id" property="ns_id" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="time" property="time" />
+		<result column="account" property="account" />
+		<association property="nPicture" javaType="com.iaecomption.pojo.NPicture">
+			<id column="p_id" property="p_id" />
+			<result column="ns_id" property="ns_id" />
+			<result column="picture" property="picture" />
+			<result column="time" property="time" />
+		</association>
+	</resultMap>
+
+	<!-- 获取所有新闻 -->
+	<select id="getAllNews" resultMap="News">
+		select * from news order by time desc
+	</select>
+
+	<!-- 获取某条新闻 -->
+	<select id="getNewsById" resultMap="News" parameterType="java.lang.String">
+		select * from news where ns_id=#{nid}
+	</select>
+
+	<!-- 删除新闻 -->
+	<delete id="delNewsById" parameterType="java.lang.String">
+		delete from news where ns_id=#{nid}
+	</delete>
+
+	<!-- 删除新闻图片 -->
+	<delete id="delNewsPicById" parameterType="java.lang.String">
+		delete from n_picture where ns_id=#{nid}
+	</delete>
+
+	<!-- 增加新闻 -->
+	<insert id="addNews" parameterType="java.util.Map">
+		insert into news (ns_id,title,content,time,account) values
+		(#{nid},#{title},#{content},#{time},#{account})
+	</insert>
+
+	<!-- 增加新闻图片 -->
+	<insert id="addNewsPic" parameterType="java.util.Map">
+		insert into n_picture (ns_id,picture,time) values
+		(#{nid},#{picture},#{time})
+	</insert>
+
+	<!-- 修改新闻图片 -->
+	<update id="updateNewsPic" parameterType="java.util.Map">
+		update n_picture set ns_id=#{nid} where ns_id={#nid}
+	</update>
+	
+	<!-- 获取新闻 -->
+	<select id="getIndexNews" resultMap="IndexNews">
+		select *,(select picture from n_picture np where np.ns_id=n.ns_id LIMIT 1) picture from news n order by time desc
+	</select>
+
+</mapper>

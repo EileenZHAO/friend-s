@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace为唯一id，一般命名为包名+文件名 -->
+<mapper namespace="com.iaecomption.dao.LoginDao">
+	<!-- 回收策略 自动刷新时间60s 最多缓存512个对象 只读 -->
+	<cache eviction="FIFO" flushInterval="100" size="512" readOnly="false">
+
+	</cache>
+	<!-- 工作人员对象映射 -->
+	<resultMap type="com.iaecomption.pojo.Personnel" id="Personnel">
+		<id column="account" property="account" />
+		<result column="password" property="password" />
+		<result column="email" property="email" />
+		<result column="department" property="department" />
+		<result column="portrait" property="portrait" />
+		<result column="boss" property="boss" />
+		<result column="retime" property="retime" />
+		<result column="root" property="root" />
+		<!-- 配置PersonnelInfo类映射 -->
+		<association property="pInfo" javaType="com.iaecomption.pojo.PersonnelInfo">
+			<id column="pi_id" property="pi_id" />
+			<result column="account" property="account" />
+			<result column="name" property="name" />
+			<result column="phone" property="phone" />
+		</association>
+	</resultMap>
+	
+	<!-- 参赛者对象映射 -->
+	<resultMap type="com.iaecomption.pojo.Contestant" id="Contestant">
+		<id column="c_account" property="c_account" />
+		<result column="password" property="password" />
+		<result column="email" property="email" />
+		<result column="portrait" property="portrait" />
+		<result column="retime" property="retime" />
+		<result column="source" property="source" />
+		<!-- 配置ContestantInfo类映射 -->
+		<association property="cInfo" javaType="com.iaecomption.pojo.ContestantInfo">
+			<id column="ci_id" property="ci_id" />
+			<result column="c_account" property="c_account" />
+			<result column="contacts" property="contacts" />
+			<result column="type" property="type" />
+			<result column="position" property="position" />
+			<result column="phone" property="phone" />
+			<result column="qq" property="qq" />
+		</association>
+	</resultMap>
+
+	<!-- 获取指定工作者信息 -->
+	<select id="getPersonnelByAccount" resultMap="Personnel" parameterType="java.lang.String">
+		select p.*,pi.pi_id,pi.`name`,pi.phone from personnel p left join personnel_info pi on p.account=pi.account where p.account=#{account}
+	</select>
+	
+	<!-- 获取指定参赛者信息 -->
+	<select id="getContestantByAccount" resultMap="Contestant" parameterType="java.lang.String">
+		select c.*,ci.ci_id,ci.contacts,ci.type,ci.position,ci.phone,ci.qq from contestant c left join contestant_info ci on c.c_account=ci.c_account where c.c_account=#{account} 
+	</select>
+	
+	<!-- 增加参赛者信息 -->
+	<insert id="addContestant" parameterType="java.util.Map">
+	    insert into contestant(c_account,`password`,email,portrait,retime,source) values (#{account},#{pwd},#{remail},#{portrait},#{retime},#{resouce})
+	</insert>
+	
+	<!-- 增加参赛者详情信息 -->
+	<insert id="addContestantInfo" parameterType="java.util.Map">
+	    insert into contestant_info(c_account) values (#{account})
+	</insert>
+
+	<!-- 获取所有参赛者信息 -->
+	<select id="getAllContestant" resultMap="Contestant">
+		select c.*,ci.ci_id,ci.contacts,ci.type,ci.position,ci.phone,ci.qq from contestant c left join contestant_info ci on c.c_account=ci.c_account
+	</select>
+
+</mapper>

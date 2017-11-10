@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace为唯一id，一般命名为包名+文件名 -->
+<mapper namespace="com.iaecomption.dao.ProductionDao">
+	<!-- 回收策略 自动刷新时间60s 最多缓存512个对象 只读 -->
+	<cache eviction="FIFO" flushInterval="100" size="512" readOnly="false">
+
+	</cache>
+
+	<!-- 作品题目对象映射 -->
+	<resultMap type="com.iaecomption.pojo.ProTitle" id="ProTitle">
+		<id column="pr_id" property="pr_id" />
+		<result column="c_account" property="c_account" />
+		<result column="title" property="title" />
+		<result column="outline" property="outline" />
+		<result column="time" property="time" />
+		<result column="state" property="state" />
+		<!-- 作品映射 -->
+		<association property="production" javaType="com.iaecomption.pojo.Production">
+			<id column="pro_id" property="pro_id" />
+			<result column="pr_id" property="pr_id" />
+			<result column="pr_url" property="pr_url" />
+			<result column="time" property="time" />
+			<result column="score" property="score" />
+		</association>
+	</resultMap>
+
+	<!-- 联系人和作品题目对象映射 -->
+	<resultMap type="com.iaecomption.pojo.ContestantInfo" id="ConAndTitle">
+		<id column="ci_id" property="ci_id" />
+		<result column="c_account" property="c_account" />
+		<result column="contacts" property="contacts" />
+		<result column="type" property="type" />
+		<result column="position" property="position" />
+		<result column="phone" property="phone" />
+		<result column="qq" property="qq" />
+		<!-- 作品题目映射 -->
+		<association property="proTitle" javaType="com.iaecomption.pojo.ProTitle">
+			<id column="pr_id" property="pr_id" />
+			<result column="c_account" property="c_account" />
+			<result column="title" property="title" />
+			<result column="outline" property="outline" />
+			<result column="time" property="time" />
+			<result column="state" property="state" />
+			<result column="houner" property="houner" />
+			<!-- 作品映射 -->
+			<association property="production" javaType="com.iaecomption.pojo.Production">
+				<id column="pro_id" property="pro_id" />
+				<result column="pr_id" property="pr_id" />
+				<result column="pr_url" property="pr_url" />
+				<result column="time" property="time" />
+				<result column="score" property="score" />
+			</association>
+		</association>
+	</resultMap>
+
+	<!-- 删除参赛者题目 -->
+	<delete id="delPtitleByAccount" parameterType="java.lang.String">
+		delete from
+		pro_title where c_account=#{account}
+	</delete>
+
+	<!-- 删除作品 -->
+	<delete id="delProductionByPid" parameterType="java.lang.String">
+		delete from
+		production where pr_id=#{pid}
+	</delete>
+
+	<!-- 获取题目id -->
+	<select resultMap="ProTitle" id="getPtitleIdByAccount"
+		parameterType="java.lang.String">
+		select * from pro_title where c_account=#{account}
+	</select>
+
+	<!-- 增加组品题目 -->
+	<insert id="addProductionTitle" parameterType="java.util.Map">
+		insert into
+		pro_title (c_account,title,outline,time,state,houner) values
+		(#{account},#{title},#{outline},#{currentTime},#{state},0)
+	</insert>
+
+	<!-- 获取题目简介 -->
+	<select id="getProTitleOutLine" resultMap="ProTitle"
+		parameterType="java.lang.String">
+		select outline from pro_title where c_account=#{account}
+	</select>
+
+	<!-- 增加作品 -->
+	<insert id="addupLoadContestProduction" parameterType="java.util.Map">
+		insert
+		into production (pr_id,pr_url,time,score) values
+		(#{pid},#{url},#{time},0)
+	</insert>
+
+	<!-- 获取所有参赛者题目 -->
+	<select id="getAllTitleMsg" resultMap="ConAndTitle">
+		select ci.*,pt.pr_id,pt.title,pt.time,pt.state from contestant_info ci left
+		join pro_title pt on ci.c_account=pt.c_account where pt.title is not
+		null
+	</select>
+	
+	<!-- 获取所有参赛者作品 -->
+	<select id="getAllProductionMsg" resultMap="ConAndTitle">
+		select ci.*,pt.pr_id,pt.title,pt.state,p.pro_id,p.time from contestant_info ci left
+		join pro_title pt on ci.c_account=pt.c_account left join production p on pt.pr_id=p.pr_id where pt.title is not
+		null and p.pr_url is not null
+	</select>
+	
+	<!-- 获取所有审核过的参赛者作品 -->
+	<select id="getAllCheckProductionMsg" resultMap="ConAndTitle">
+		select ci.*,pt.pr_id,pt.title,pt.state,pt.houner,p.pro_id,p.time,p.score from contestant_info ci left
+		join pro_title pt on ci.c_account=pt.c_account left join production p on pt.pr_id=p.pr_id where pt.title is not
+		null and p.pr_url is not null and pt.state=1 order by p.score desc
+	</select>
+	
+	<!-- 获取作品 -->
+	<select id="getProductionFile" resultMap="ProTitle" parameterType="java.lang.String">
+	   select pr_url from production where pro_id=#{pid}
+	</select>
+	
+	<!-- 作品打分 -->
+	<update id="updateProductionScore" parameterType="java.util.Map">
+	   update production set score=#{score} where pro_id=#{pid}
+	</update> 
+	
+	<!-- 作品评审状态修改 -->
+	<update id="updateTitleState" parameterType="java.util.Map">
+	   update pro_title set state=1 where pr_id=#{tid}
+	</update>
+	
+	<!-- 设置奖项 -->
+	<update id="updateProductionHouner" parameterType="java.util.Map">
+	   update pro_title set houner=#{houner} where pr_id=#{tid}
+	</update>
+</mapper>

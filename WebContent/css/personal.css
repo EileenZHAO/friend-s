@@ -1,0 +1,170 @@
+.headtop {
+    height: 136px;
+    min-width: 1000px;
+    background-image: url("../images/head_bg.jpg");
+    background-size: 100% 100%;
+}
+
+.htc {
+    height: 100px;
+}
+
+.htcl {
+    float: left;
+}
+
+.htcr {
+    height: 100px;
+    float: right;
+}
+
+.htcri img {
+    border-radius: 100%;
+    transition: all 2s;
+}
+
+.htcri img:hover {
+    cursor: pointer;
+    width: 90px;
+    height: 90px;
+}
+
+.htcri div {
+    width: 81px;
+    height: 81px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.htcri {
+    float: left;
+    text-align: center;
+    font-weight: 600;
+    font-family: 楷体;
+}
+
+.htcri:hover {
+    color: #ec6f33;
+    cursor: pointer;
+}
+
+.perleft {
+    float: left;
+    height: 540px;
+    width: 20%;
+    border: 3px solid #cedad0;
+    box-shadow: 3px 1px 1px #dfffe4, /*左边阴影*/ 3px 0 3px #dfffe4, /*右边阴影*/ 0 10px 10px #f3ffea, /*顶部阴影*/ 0 10px 10px #807e7a; /*底边阴影*/
+}
+
+.percenter {
+    float: left;
+    height: 540px;
+    width: 79%;
+    margin-left: 7px;
+}
+
+.pltop {
+    width: 100%;
+    height: 120px;
+    border-bottom: 30px solid #e1ffd4;
+}
+
+.pltopi {
+    border: 1px solid #cdd0dd;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    margin-top: 10px;
+    margin-left: 10px;
+    float: left;
+}
+
+.pltopi:hover {
+    cursor: pointer;
+}
+
+.pltopi img {
+    width: 100px;
+    height: 100px;
+}
+
+.pltopx {
+    height: 100px;
+    width: 140px;
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    line-height: 1.5;
+}
+
+.pltopx span {
+    vertical-align: middle;
+    display: block;
+    color: #57cd66;
+    font-size: 15px;
+    float: left;
+    margin-top: 10%;
+    font-weight: 600;
+}
+
+.plbottom {
+    min-height: 70px;
+}
+
+.plbtm {
+    border-top: 2px solid white;
+    text-align: center;
+    overflow: hidden;
+    height: 30px;
+    transition: 1s;
+}
+
+.plbtm div {
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+.plbtmf {
+    background-color: #1cd042;
+    color: white;
+    font-weight: 600;
+}
+
+.plbtms {
+    color: #1cd042;
+    font-weight: 600;
+    border-bottom: 2px dotted #ced1cd;
+}
+
+.plbtms:hover {
+    background-color: #deffd9;
+}
+
+.xb{
+    height: 540px;
+    width: 100%;
+    float: left;
+    overflow : hidden;
+}
+
+.center_iframe{
+    width: 100%;
+    height: 540px;
+    overflow-x : hidden;
+}
+
+.perbottom{
+    height: 30px;
+    clear: both;
+    line-height: 30px;
+    color: #1cd042;
+    font-family: 楷体;
+    background-color: #d9e6d3;
+}
+
+.ewm{
+	text-align: center;
+}

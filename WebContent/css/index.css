@@ -1,0 +1,295 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+/*未访问：蓝色、无下划线*/
+a:link {
+    color: #18b63a;
+    text-decoration: none;
+}
+
+/*激活：红色*/
+a:active {
+    color: red;
+}
+
+/*已访问：purple、无下划线*/
+a:visited {
+    color: #1cd042;
+    text-decoration: none;
+}
+
+/*鼠标移近：红色、下划线*/
+a:hover {
+    color: red;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.index_nav {
+    height: 75px;
+    margin-top: 8px;
+}
+
+.index_nav_left {
+    float: left;
+    height: 75px;
+}
+
+.index_nav_tel {
+    height: 75px;
+    line-height: 75px;
+    float: left;
+    padding-right: 50px;
+}
+
+.index_nav_tel img {
+    vertical-align: text-bottom;
+}
+
+.index_nav_lr {
+    height: 75px;
+    float: left;
+    line-height: 75px;
+}
+
+.index_nav_right {
+    width: 600px;
+    float: right;
+    height: 75px;
+    line-height: 75px;
+    font-size: 30px;
+    color: #39c428;
+    font-weight: 600;
+}
+
+.inrl:hover {
+    color: #ec6f33;
+    cursor: pointer;
+}
+
+.inrr:hover {
+    color: #ec6f33;
+    cursor: pointer;
+}
+
+.backindex:hover{
+    color: #ec6f33;
+    cursor: pointer;
+}
+
+.ints {
+    color: black;
+}
+
+hr {
+    background-color: #39c428;
+    margin-top: 8px;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.footerm {
+    margin-top: 1px;
+}
+
+.icontent {
+    height: 400px;
+    background-image: url("../images/bg1.png");
+    background-size: 100% 100%;
+    border: 1px solid #dbebf6;
+}
+
+.circle {
+    margin-left: 100px;
+}
+
+.inews {
+    margin-top: 20px;
+}
+
+h1 {
+    margin-left: 30px;
+}
+
+.newitem {
+    height: 170px;
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.newitem img {
+    width: 200px;
+    height: 150px;
+}
+
+.newimg {
+    float: left;
+}
+
+.newcontent {
+    float: left;
+    width: 70%;
+    margin-left: 20px;
+}
+
+.newtitle {
+    color: #393939;
+    font-size: 25px;
+    font-weight: 600;
+    text-wrap: normal;
+    line-height: 1.5;
+}
+
+.newtitle:hover {
+    cursor: pointer;
+    color: #ff8514;
+}
+
+.getmore {
+    height: 50px;
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.getmore img {
+    float: right;
+}
+
+.getmore img:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.tdysnc {
+    margin: auto;
+    width: 80%;
+}
+
+.tdysnc td {
+    border-bottom: 1px dotted #aba7a5;
+    height: 40px;
+    vertical-align: middle;
+    font-size: 20px;
+}
+
+.tftd {
+    width: 30px;
+}
+
+.dytime{
+	text-align: right;
+	color: #dedede;
+    font-weight: 200;
+    font-size: 15px;
+}
+
+.tftd img {
+    width: 15px;
+    height: 15px;
+}
+
+.tdysnc tr:hover {
+    color: #18b63a;
+    cursor: pointer;
+    background-color: #eafdeb;
+    z-index: 999999;
+}
+
+.irrules {
+    width: 150px;
+    height: 200px;
+    position: fixed;
+    top: 30%;
+    left: 96%;
+    border: 1px solid #a7aaa6;
+    z-index: 1;
+    transition: 1s;
+    border-radius: 10px;
+}
+
+.irrules:hover {
+    left: 89%;
+    cursor: pointer;
+}
+
+.irrusme{
+    width: 40px;
+    height: 200px;
+    align-items: center;
+    float: left;
+    font-size: 25px;
+    background-color: #eafdeb;
+    font-weight: 600;
+    text-align: center;
+    writing-mode: vertical-lr;
+    padding-left: 20px;
+    border-radius: 10px;
+}
+
+.itridition{
+    float: left;
+    height: 100%;
+    width: 88px;
+    background-color: #f4f4f4;
+}
+
+.itridition div{
+    font-size: 20px;
+    height: 50px;
+    line-height: 50px;
+    margin-top: 10px;
+}
+.itridition div:hover{
+    background-color: #eafdeb;
+    color: #ec6f33;
+}
+
+.contd{
+    width: 70%;
+    margin: auto;
+    margin-top: 30px;
+    overflow: auto;
+    display: none;
+}
+
+.procontd{
+	width: 100%;
+	 margin: auto;
+    overflow: auto;
+    display: none;
+}
+
+.tproductionmsg{
+	width: 90%;
+	margin: auto;
+}
+
+.tproductionmsg td{
+	border: 1px solid #a7aaa6;
+	height:40px;
+	line-height: 40px;
+	text-align: center;
+}
+
+.contd p{
+    line-height: 1.5;
+    font-size: 20px;
+}
+
+#cp1{
+    font-size: 30px;
+    color: black;
+    font-weight: 600;
+    text-align: center;
+}
+
+.cp2{
+    color: red;
+}

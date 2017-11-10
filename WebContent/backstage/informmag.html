@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>通知管理</title>
+<link rel="stylesheet" href="../layui/css/layui.css" media="all">
+<link rel="stylesheet" href="css/informmag.css" media="all">
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script src="../layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/informmag.js"></script>
+</head>
+<body>
+	<div>
+		<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+			<ul class="layui-tab-title">
+				<li class="layui-this">通知发布</li>
+				<li>查看通知</li>
+			</ul>
+			<div class="layui-tab-content" style="min-height: 450px;">
+				<!-- 第一个tab-->
+				<div class="layui-tab-item layui-show">
+					<form class="layui-form" action="">
+						<div class="layui-form-item">
+							<label class="layui-form-label">通知标题</label>
+
+							<div class="layui-input-block">
+								<input type="text" name="title" lay-verify="title"
+									autocomplete="off" placeholder="请输入标题"
+									class="layui-input informtitle">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">接收人</label>
+							<div class="layui-input-block conselect"></div>
+						</div>
+						<fieldset class="layui-elem-field layui-field-title"
+							style="margin-top: 50px;">
+							<legend>通知编辑</legend>
+						</fieldset>
+						<textarea class="layui-textarea" id="bianjiqi"
+							style="display: none"></textarea>
+					</form>
+					<div class="site-demo-button" style="margin-top: 20px;">
+						<button class="layui-btn site-demo-layedit addInform"
+							data-type="content">通知发布</button>
+					</div>
+				</div>
+				<!-- 第二个tab-->
+				<div class="layui-tab-item">
+					<fieldset class="layui-elem-field layui-field-title"
+						style="margin-top: 50px;">
+						<legend>通知信息</legend>
+					</fieldset>
+					<table class="layui-table csz" lay-even="" lay-skin="nob">
+						<colgroup>
+							<col width="150">
+							<col width="150">
+							<col width="150">
+							<col>
+							<col width="150">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>发布人</th>
+								<th>接收人</th>
+								<th>发布时间</th>
+								<th>标题</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody class="showInformMsg">
+							<!-- 显示通知 -->
+						</tbody>
+					</table>
+					<div class="page">
+						<div id="page"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

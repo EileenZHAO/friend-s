@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>创新创业大赛后台管理</title>
+    <link rel="icon" href="../images/icon.png">
+    <link rel="stylesheet" href="js/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/skins/_all-skins.css">
+    <link rel="stylesheet" href="../layui/css/layui.css" media="all">
+    <script src="js/jquery/jQuery-2.2.0.min.js"></script>
+    <script src="../layui/layui.js" charset="utf-8"></script>
+    <script>
+    $(function(){
+    	init();
+    	showUser();
+    	uploadimg();
+    });
+    
+    //初始化
+    function init(){
+    	layui.use([ 'layer', 'upload' ], function() {
+			$ = layui.jquery, layer = layui.layer, upload = layui.upload;
+		});
+    }
+    
+    //用户显示
+    function showUser(){
+    	$.post("../getUser.do",null,function(data){
+    		$(".account").text(data.account);
+    		if(data.portrait!=null&&data.portrait!=""){
+    			$(".uimg").attr("src",data.portrait);
+    		}
+    	});
+    }
+
+	//上传图片接口
+	function uploadimg() {
+		layui.use('upload', function() {
+			layui.upload({
+				url : '../upLoadPersonalPortrait.do',
+				elem : "#upload",
+				ext : 'jpg|png|gif',
+				success : function(res) {
+					if (res.result == 0) {
+						layer.msg('上传失败！');
+					} else {
+						$(".uimg").attr("src", res.url);
+						layer.msg('设置成功！');
+					}
+				}
+			});
+		});
+	}
+    </script>
+</head>
+<body class="hold-transition skin-blue sidebar-mini" style="overflow:hidden;">
+    <div id="ajax-loader" style="cursor: progress; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: #fff; z-index: 10000; overflow: hidden;">
+        <img src="img/ajax-loader.gif" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto;" />
+    </div>
+    <div class="wrapper">
+        <!--头部信息-->
+        <header class="main-header">
+            <a href="javascript:void(0)" target="_blank" class="logo">
+                <span class="logo-mini">CIEC</span>
+                <span class="logo-lg">CIEC<strong>创新创业大赛</strong></span>
+            </a>
+            <nav class="navbar navbar-static-top">
+                <a class="sidebar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="img/user2-160x160.jpg" class="user-image uimg" alt="User Image">
+                                <span class="hidden-xs account">administrator</span>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="javascript:void(0);"><i class="fa fa-trash-o"></i>清空缓存</a></li>
+                                <li><input type="file" name="file" id="upload" class="layui-upload-file" lay-title="更换头像"></li>
+                                <li class="divider"></li>
+                                <li><a class="pexit" href="javascript:pexit()"><i class="ace-icon fa fa-power-off"></i>安全退出</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!--左边导航-->
+        <div class="main-sidebar">
+            <div class="sidebar">
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="img/user2-160x160.jpg" class="img-circle uimg" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p class="account">administrator</p>
+                        <a><i class="fa fa-circle text-success"></i>在线</a>
+                    </div>
+                </div>
+                <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group" style="border: 1px solid white;width: 100%;height: 2px">
+
+                    </div>
+                </form>
+                <ul class="sidebar-menu" id="sidebar-menu">
+                    <!--<li class="header">导航菜单</li>-->
+                </ul>
+            </div>
+        </div>
+        <!--中间内容-->
+        <div id="content-wrapper" class="content-wrapper">
+            <div class="content-tabs">
+                <button class="roll-nav roll-left tabLeft">
+                    <i class="fa fa-backward"></i>
+                </button>
+                <nav class="page-tabs menuTabs">
+                    <div class="page-tabs-content" style="margin-left: 0px;">
+                        <a href="javascript:void(0);" class="menuTab active" data-id="welcom.html">欢迎首页</a>
+                    </div>
+                </nav>
+                <button class="roll-nav roll-right tabRight">
+                    <i class="fa fa-forward" style="margin-left: 3px;"></i>
+                </button>
+                <div class="btn-group roll-nav roll-right">
+                    <button class="dropdown tabClose" data-toggle="dropdown">
+                        页签操作<i class="fa fa-caret-down" style="padding-left: 3px;"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a class="tabReload" href="javascript:void(0);">刷新当前</a></li>
+                        <li><a class="tabCloseCurrent" href="javascript:void(0);">关闭当前</a></li>
+                        <li><a class="tabCloseAll" href="javascript:void(0);">全部关闭</a></li>
+                        <li><a class="tabCloseOther" href="javascript:void(0);">除此之外全部关闭</a></li>
+                    </ul>
+                </div>
+                <button class="roll-nav roll-right fullscreen"><i class="fa fa-arrows-alt"></i></button>
+            </div>
+            <div class="content-iframe" style="overflow: hidden;">
+                <div class="mainContent" id="content-main" style="margin: 10px; margin-bottom: 0px; padding: 0;">
+                    <iframe class="LRADMS_iframe" width="100%" height="100%" src="welcom.html" frameborder="0" data-id="welcom.html"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

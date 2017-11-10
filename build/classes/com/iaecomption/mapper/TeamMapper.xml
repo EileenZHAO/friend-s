@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace为唯一id，一般命名为包名+文件名 -->
+<mapper namespace="com.iaecomption.dao.TeamDao">
+	<!-- 回收策略 自动刷新时间60s 最多缓存512个对象 只读 -->
+	<cache eviction="FIFO" flushInterval="100" size="512" readOnly="false">
+
+	</cache>
+
+	<!-- 题目映射 -->
+	<resultMap type="com.iaecomption.pojo.TeamInfo" id="TeamInfo">
+		<id column="t_id" property="t_id" />
+		<result column="c_account" property="c_account" />
+		<result column="t_name" property="t_name" />
+		<result column="pr_name" property="pr_name" />
+		<result column="stage" property="stage" />
+		<result column="field" property="field" />
+		<result column="position" property="position" />
+		<result column="iszc" property="iszc" />
+		<result column="t_time" property="t_time" />
+		<result column="o_address" property="o_address" />
+		<result column="z_code" property="z_code" />
+		<result column="number" property="number" />
+		<result column="purpose" property="purpose" />
+		<association property="head" javaType="com.iaecomption.pojo.Head">
+			<id column="h_id" property="h_id" />
+			<result column="t_id" property="t_id" />
+			<result column="hname" property="name" />
+			<result column="hposition" property="position" />
+			<result column="hphone" property="phone" />
+			<result column="c_type" property="c_type" />
+			<result column="id_card" property="id_card" />
+			<result column="hemail" property="email" />
+		</association>
+		<collection property="tMembers" ofType="com.iaecomption.pojo.TMember">
+			<id column="m_id" property="m_id" />
+			<result column="t_id" property="t_id" />
+			<result column="tmname" property="name" />
+			<result column="sex" property="sex" />
+			<result column="age" property="age" />
+			<result column="education" property="education" />
+			<result column="tmposition" property="position" />
+			<result column="tmphone" property="phone" />
+			<result column="tmemail" property="email" />
+			<result column="overseas_study" property="overseas_study" />
+			<result column="rxqrjh" property="rxqrjh" />
+			<result column="resume" property="resume" />
+		</collection>
+	</resultMap>
+
+    <!-- 队员映射 -->
+	<resultMap type="com.iaecomption.pojo.TMember" id="Member">
+		<id column="m_id" property="m_id" />
+		<result column="t_id" property="t_id" />
+		<result column="tmname" property="name" />
+		<result column="sex" property="sex" />
+		<result column="age" property="age" />
+		<result column="education" property="education" />
+		<result column="tmposition" property="position" />
+		<result column="tmphone" property="phone" />
+		<result column="tmemail" property="email" />
+		<result column="overseas_study" property="overseas_study" />
+		<result column="rxqrjh" property="rxqrjh" />
+		<result column="resume" property="resume" />
+	</resultMap>
+
+	<!-- 删除参赛者团队 -->
+	<delete id="delTeamByAccount" parameterType="java.lang.String">
+		delete from team_info where c_account=#{account}
+	</delete>
+
+	<!-- 获取团队id -->
+	<select resultMap="TeamInfo" id="getTeamIdByAccount"
+		parameterType="java.lang.String">
+		select t_id from team_info where c_account=#{account}
+	</select>
+
+	<!-- 删除负责人 -->
+	<delete id="delHeadByTid" parameterType="java.lang.String">
+		delete from head where t_id=#{tid}
+	</delete>
+
+	<!-- 删除成员 -->
+	<delete id="delMemberByTid" parameterType="java.lang.String">
+		delete from t_member where t_id=#{tid}
+	</delete>
+
+	<!-- 获取团队信息 -->
+	<select resultMap="TeamInfo" id="getTeamMsg" parameterType="java.lang.String">
+		select ti.*,h.h_id,h.`name` hname,h.position hposition,h.phone
+		hphone,h.c_type
+		,h.id_card,h.email hemail,tm.m_id,tm.`name` tmname,tm.sex,tm.age,tm.education
+		,tm.position tmposition,tm.phone tmphone,tm.email
+		tmemail,tm.overseas_study,tm.rxqrjh
+		,tm.resume from team_info ti left join head h on ti.t_id=h.t_id left join
+		t_member tm
+		on h.t_id=tm.t_id where ti.c_account=#{account}
+	</select>
+	
+	<!-- 获取指定成员简介 -->
+	<select resultMap="Member" id="getResumeByMid" parameterType="java.lang.String">
+	   select resume from t_member where m_id=#{mid}
+	</select>
+	
+	<!-- 增加团队基本信息 -->
+	<insert id="addTeamBaseMsg" parameterType="java.util.Map">
+	   insert into team_info (c_account,t_name,pr_name,stage,field,position,iszc,t_time,o_address,z_code,number,purpose) values (#{account},#{tname},#{title},#{stage},#{field},#{address},#{iszc},#{ttime},#{oaddress},#{zcode},#{number},#{purpose})
+	</insert>
+	
+	<!-- 增加联系人信息 -->
+	<insert id="addTeamHeadMsg" parameterType="java.util.Map">
+	   insert into head (t_id,`name`,position,phone,c_type,id_card,email) values (#{tid},#{hname},#{hposition},#{hphone},#{ctype},#{id_card},#{hemail})
+	</insert>
+	
+	<!-- 增加成员人信息 -->
+	<insert id="addTeamMembersMsg" parameterType="java.util.Map">
+	   insert into t_member (t_id,`name`,sex,age,education,position,phone,email,overseas_study,rxqrjh,resume) values (#{mtid},#{mname},#{msex},#{mage},#{meducation},#{mposition},#{mphone},#{memail},#{moverseas},#{mrxqrjh},#{resume})
+	</insert>
+
+</mapper>

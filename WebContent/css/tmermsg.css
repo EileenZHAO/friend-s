@@ -1,0 +1,181 @@
+/*未访问：蓝色、无下划线*/
+a:link {
+	color: #18b63a;
+	text-decoration: none;
+}
+
+/*激活：红色*/
+a:active {
+	color: red;
+}
+
+/*已访问：purple、无下划线*/
+a:visited {
+	color: #1cd042;
+	text-decoration: none;
+}
+
+/*鼠标移近：红色、下划线*/
+a:hover {
+	color: red;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.csz th {
+	text-align: center;
+}
+
+.csz td {
+	text-align: center;
+}
+
+.tmsgtop {
+    height: 130px;
+    border-bottom: 10px dashed #d6ffd4;
+}
+
+.tmsgtopit {
+    width: 91px;
+    height: 100px;
+    text-align: center;
+    float: left;
+    cursor: pointer;
+}
+
+.tmsgtopiti{
+    text-align: end;
+    float: left;
+    margin-top: 65px;
+}
+
+.tmsgtopitx {
+    width: 91px;
+    height: 29px;
+    background-image: url("../images/sysset_dd.gif");
+    text-align: center;
+    line-height: 29px;
+    font-size: 10px;
+    color: #a9abb0;
+    background-size: 100% 100%;
+}
+
+.tmsgxd{
+    height: 30px;
+    line-height: 30px;
+    color: black;
+    font-weight: 600;
+    font-family: 楷体;
+}
+
+.txxtt {
+    margin-top: 20px;
+}
+
+.txxt {
+    margin-top: 20px;
+}
+
+.txxt table {
+    width: 100%;
+    margin: auto;
+}
+
+.txxt table td {
+    height: 40px;
+    border: 1px solid #dedae3;
+}
+
+.fristtr td input {
+    height: 30px;
+    width: 70%;
+}
+
+.fristtd {
+    width: 15%;
+    background-color: #f9f5fe;
+    text-align: right;
+    color: #7d7d7d;
+    font-weight: 600;
+}
+
+.threetd {
+    width: 15%;
+    background-color: #f9f5fe;
+    text-align: right;
+    color: #7d7d7d;
+    font-weight: 600;
+}
+
+.ttts {
+    height: 35px;
+    width: 8%;
+}
+
+.tttss {
+    height: 35px;
+    width: 30%;
+}
+
+.radioiszc{
+    font-size: 13px;
+}
+
+.pta{
+    width: 99%;
+    height: 200px;
+    overflow: auto;
+}
+
+.bttombtn{
+    height: 70px;
+    position: relative;
+}
+
+.bttombtn div{
+    width: 100px;
+    height: 30px;
+    background-image: url("../images/icon5.gif");
+    background-size: 100% 100%;
+    float: left;
+    line-height: 30px;
+    text-align: center;
+    font-weight: 600;
+    color: white;
+    position: relative;
+    left: 40%;
+    top: 20px;
+}
+
+.bttombtn div:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.bttombtni{
+    height: 70px;
+    position: relative;
+}
+
+.bttombtni div{
+    width: 100px;
+    height: 30px;
+    background-image: url("../images/icon5.gif");
+    background-size: 100% 100%;
+    float: left;
+    line-height: 30px;
+    text-align: center;
+    font-weight: 600;
+    color: white;
+    position: relative;
+    top: 20px;
+}
+
+.bttombtni div:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.baomingbox,.tableinput,.tableshow{
+	display: none;
+}

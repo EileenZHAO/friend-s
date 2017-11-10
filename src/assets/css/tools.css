@@ -1,0 +1,50 @@
+html{
+  font-size: 62.5%;
+  color: #222;
+}
+/*工具样式*/
+.center-block{
+  display:block;
+  margin-right: auto;
+  margin-left: auto;
+  /*加上这个样式在就可以在父元素中居中*/
+}
+.pull-right{
+  float:right !important;
+}
+.pull-left{
+  float: left !important;
+}
+.text-right{
+  text-align: right !important;
+}
+.text-left{
+  text-align: left !important;
+}
+.text-center{
+  text-align: center !important;
+}
+.hide{
+  display: none !important;
+}
+.show{
+  display: block !important;
+}
+.invisible{
+  visibility: hidden !important;
+}
+.text-hide{
+  /*隐藏文本给SEO用的或者给浏览器的爬虫用*/
+  font: 0/0 a;
+  color:transparent;
+  text-shadow:none;
+  background-color: transparent;
+  border:0;
+}
+.clearfix:before,.clearfix:after{
+  content:"";
+  display: table;
+}
+.clearfix:after{
+  clear: both;
+}

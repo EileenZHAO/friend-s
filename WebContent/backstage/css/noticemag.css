@@ -1,0 +1,39 @@
+/*未访问：蓝色、无下划线*/
+a:link {
+	color: #18b63a;
+	text-decoration: none;
+}
+
+/*激活：红色*/
+a:active {
+	color: red;
+}
+
+/*已访问：purple、无下划线*/
+a:visited {
+	color: #1cd042;
+	text-decoration: none;
+}
+
+/*鼠标移近：红色、下划线*/
+a:hover {
+	color: red;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.csz th {
+	text-align: center;
+}
+
+.csz td {
+	text-align: center;
+}
+
+.page {
+	text-align: center;
+}
+
+.upts {
+	color: red;
+}

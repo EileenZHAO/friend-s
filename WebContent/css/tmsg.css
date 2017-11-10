@@ -1,0 +1,155 @@
+.tmsgtop {
+    height: 130px;
+    border-bottom: 10px dashed #d6ffd4;
+}
+
+.tmsgtopit {
+    width: 91px;
+    height: 100px;
+    text-align: center;
+    float: left;
+    cursor: pointer;
+}
+
+.tmsgtopiti {
+    text-align: end;
+    float: left;
+    margin-top: 65px;
+}
+
+.tmsgtopitx {
+    width: 91px;
+    height: 29px;
+    background-image: url("../images/sysset_dd.gif");
+    text-align: center;
+    line-height: 29px;
+    font-size: 10px;
+    color: #a9abb0;
+    background-size: 100% 100%;
+}
+
+.tmsgxd {
+    height: 30px;
+    line-height: 30px;
+    color: black;
+    font-weight: 600;
+    font-family: 楷体;
+}
+
+.txxt {
+    margin-top: 20px;
+}
+
+.txxt table {
+    width: 100%;
+    margin: auto;
+}
+
+.txxt table td {
+    height: 40px;
+    border: 1px solid #dedae3;
+}
+
+.fristtd {
+    width: 15%;
+    background-color: #f9f5fe;
+    text-align: right;
+    color: #7d7d7d;
+    font-weight: 600;
+}
+
+.threetd {
+    width: 15%;
+    background-color: #f9f5fe;
+    text-align: right;
+    color: #7d7d7d;
+    font-weight: 600;
+}
+
+.fristtr td input {
+    height: 30px;
+    width: 70%;
+}
+
+.ttts {
+    height: 35px;
+    width: 70%;
+}
+
+#city select {
+    width: 15%;
+    height: 35px;
+}
+
+.radioiszc input {
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
+    line-height: 35px;
+}
+
+.bttomend{
+    height: 50px;
+    line-height: 50px;
+    font-size: 15px;
+    color: #f8710a;
+}
+
+.bttombtn{
+    height: 100px;
+    position: relative;
+}
+
+.bttombtn div{
+    width: 100px;
+    height: 30px;
+    background-image: url("../images/icon5.gif");
+    background-size: 100% 100%;
+    float: left;
+    line-height: 30px;
+    text-align: center;
+    font-weight: 600;
+    color: white;
+    position: relative;
+    left: 40%;
+    top: 20px;
+}
+
+.bttombtn div:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.pta{
+    width: 99%;
+    height: 200px;
+    overflow: auto;
+}
+
+.teambasemsg{
+margin: auto;
+width: 100%;
+text-align: center;
+color: gray;
+}
+
+.tms{
+text-align: left;
+}
+
+.fontcolor{
+	color: gray;
+}
+
+.saveTeamMsg{
+	display: none;
+}
+
+.showTeamMsg{
+	display: none;
+}
+
+.teambasemsg td{
+	height:50px;
+	line-height: 50px;
+}

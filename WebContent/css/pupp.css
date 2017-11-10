@@ -1,0 +1,39 @@
+.xgtx{
+    width: 100%;
+}
+
+.xgtx div{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.supload{
+    border: 1px solid #c1c6c0;
+    padding-bottom: 4px;
+}
+
+.proimg{
+    width: 100px;
+    height: 100px;
+    border: 1px solid #c8ffab;
+    margin: auto;
+    overflow: hidden;
+}
+
+.proimg img{
+    width: 100px;
+    height: 100px;
+}
+
+.tmsgxd{
+    height: 30px;
+    line-height: 30px;
+    color: black;
+    font-weight: 600;
+    font-family: 楷体;
+}
+
+.tmsgtop {
+    height: 50px;
+    border-bottom: 10px dashed #d6ffd4;
+}

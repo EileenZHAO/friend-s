@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace为唯一id，一般命名为包名+文件名 -->
+<mapper namespace="com.iaecomption.dao.PersonnelDao">
+	<!-- 回收策略 自动刷新时间60s 最多缓存512个对象 只读 -->
+	<cache eviction="FIFO" flushInterval="100" size="512" readOnly="false">
+
+	</cache>
+
+	<!-- 工作人员对象映射 -->
+	<resultMap type="com.iaecomption.pojo.Personnel" id="Personnel1">
+		<id column="account" property="account" />
+		<result column="password" property="password" />
+		<result column="email" property="email" />
+		<result column="department" property="department" />
+		<result column="portrait" property="portrait" />
+		<result column="boss" property="boss" />
+		<result column="retime" property="retime" />
+		<result column="root" property="root" />
+		<!-- 配置PersonnelInfo类映射 -->
+		<association property="pInfo" javaType="com.iaecomption.pojo.PersonnelInfo">
+			<id column="pi_id" property="pi_id" />
+			<result column="account" property="account" />
+			<result column="name" property="name" />
+			<result column="phone" property="phone" />
+		</association>
+	</resultMap>
+
+	<!-- 获取所有工作者信息 -->
+	<select id="getAllPersonnel" resultMap="Personnel1">
+		select
+		p.*,pi.pi_id,pi.`name`,pi.phone from personnel p left join
+		personnel_info pi on p.account=pi.account
+	</select>
+
+	<!-- 删除工作者 -->
+	<delete id="delPersonnelByAccount">
+		delete from personnel where account=#{account}
+	</delete>
+
+	<!-- 删除工作者详情 -->
+	<delete id="delPersonnelInfoByAccount">
+		delete from personnel_info where account=#{account}
+	</delete>
+
+	<!-- 增加工作者 -->
+	<insert id="addPersonnel" parameterType="java.util.Map">
+		insert into personnel
+		(account,`password`,email,department,portrait,boss,retime,root) values
+		(#{phone},'e10adc3949ba59abbe56e057f20f883e',#{email},#{department},#{portrait},#{boss},#{retime},#{root})
+	</insert>
+
+	<!-- 增加工作者详情 -->
+	<insert id="addPersonnelInfo" parameterType="java.util.Map">
+		insert into personnel_info (account,`name`,phone) values
+		(#{phone},#{name},#{phone})
+	</insert>
+
+	<!-- 判断工作者是否存在 -->
+	<select id="getAllPersonnelByAccount" resultMap="Personnel1"
+		parameterType="java.lang.String">
+		select * from personnel where account=#{account}
+	</select>
+
+	<!-- 获取指定工作者信息 -->
+	<select id="getPersonnelByAccount" resultMap="Personnel1"
+		parameterType="java.lang.String">
+		select p.*,pi.pi_id,pi.`name`,pi.phone from personnel p
+		left join personnel_info pi on p.account=pi.account where
+		p.account=#{account}
+	</select>
+
+	<!-- 修改工作者 -->
+	<update id="updatePersonnelByAccount" parameterType="java.util.Map">
+		update personnel set
+		account=#{account},email=#{email},department=#{department},boss=#{boss}
+		where account=#{account}
+	</update>
+
+	<!-- 修改工作者详情 -->
+	<update id="updatePersonnelInfoByAccount" parameterType="java.util.Map">
+		update personnel_info set account=#{account},phone=#{phone} where
+		account=#{account}
+	</update>
+
+	<!-- 模糊查找工作者 -->
+	<select id="getPersonnelByLike" resultMap="Personnel1"
+		parameterType="java.util.Map">
+		select p.*,pi.pi_id,pi.`name`,pi.phone from personnel p left join
+		personnel_info pi on p.account=pi.account where p.account like #{msg}
+		or pi.`name` like #{msg} or pi.phone like #{msg} or p.retime like
+		#{msg} or p.email like #{msg} or p.boss like #{msg} or p.department
+		like #{msg}
+	</select>
+
+	<!-- 修改密码 -->
+	<update id="updatePwdByAccount" parameterType="java.util.Map">
+		update personnel set `password`=#{pwd} where account=#{account}
+	</update>
+
+	<!-- 修改头像 -->
+	<update id="updatePortrait" parameterType="java.util.Map">
+		update personnel set portrait=#{portrait} where account=#{account}
+	</update>
+
+</mapper>

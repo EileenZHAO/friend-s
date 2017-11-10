@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace为唯一id，一般命名为包名+文件名 -->
+<mapper namespace="com.iaecomption.dao.DynamicDao">
+	<!-- 回收策略 自动刷新时间60s 最多缓存512个对象 只读 -->
+	<cache eviction="FIFO" flushInterval="100" size="512" readOnly="false">
+
+	</cache>
+	<!-- 动态对象映射 -->
+	<resultMap type="com.iaecomption.pojo.Dynamicc" id="Dynamicc">
+		<id column="dy_id" property="dy_id" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="time" property="time" />
+		<result column="account" property="account" />
+	</resultMap>
+	
+	<!-- 动态图片对象映射 -->
+	<resultMap type="com.iaecomption.pojo.DPicture" id="DPicture">
+		<id column="p_id" property="p_id" />
+		<result column="dy_id" property="dy_id" />
+		<result column="picture" property="picture" />
+		<result column="time" property="time" />
+	</resultMap>
+	
+	<!-- 获取所有动态 -->
+	<select id="getAllDynamic" resultMap="Dynamicc">
+	    select * from dynamicc order by time desc
+	</select>
+	
+	<!-- 获取某条动态 -->
+	<select id="getDynamicById" resultMap="Dynamicc" parameterType="java.lang.String">
+	    select * from dynamicc where dy_id=#{did}
+	</select>
+	
+	<!-- 删除动态 -->
+	<delete id="delDynamicById" parameterType="java.lang.String">
+	    delete from dynamicc where dy_id=#{did}
+	</delete>
+	
+	<!-- 删除动态图片 -->
+	<delete id="delDynamicPicById" parameterType="java.lang.String">
+	    delete from d_picture where dy_id=#{did}
+	</delete>
+	
+	<!-- 增加动态 -->
+	<insert id="addDynamic" parameterType="java.util.Map">
+	    insert into dynamicc (dy_id,title,content,time,account) values (#{did},#{title},#{content},#{time},#{account})
+	</insert>
+	
+	<!-- 增加动态图片 -->
+	<insert id="addDynamicPic" parameterType="java.util.Map">
+	    insert into d_picture (dy_id,picture,time) values (#{did},#{picture},#{time})
+	</insert>
+	
+	<!-- 修改动态图片 -->
+	<update id="updateDynamicPic" parameterType="java.util.Map">
+	    update d_picture set dy_id=#{did} where dy_id={#pid}
+	</update>
+	
+	<!-- 获取动态 -->
+	<select id="getIndexDynamic" resultMap="Dynamicc">
+	    select dy_id,title,time from dynamicc order by time desc
+	</select>
+	
+</mapper>

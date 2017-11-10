@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace为唯一id，一般命名为包名+文件名 -->
+<mapper namespace="com.iaecomption.dao.InformDao">
+	<!-- 回收策略 自动刷新时间60s 最多缓存512个对象 只读 -->
+	<cache eviction="FIFO" flushInterval="100" size="512" readOnly="false">
+
+	</cache>
+
+	<!-- 通知对象映射 -->
+	<resultMap type="com.iaecomption.pojo.Inform" id="Inform">
+		<id column="in_id" property="in_id" />
+		<result column="c_account" property="c_account" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="time" property="time" />
+		<result column="account" property="account" />
+		<result column="type" property="type" />
+		<result column="state" property="state" />
+		<!-- 配置接收者映射 -->
+		<association property="contestantInfo"
+			javaType="com.iaecomption.pojo.ContestantInfo">
+			<id column="ci_id" property="ci_id" />
+			<result column="c_account" property="c_account" />
+			<result column="contacts" property="contacts" />
+			<result column="type" property="type" />
+			<result column="position" property="position" />
+			<result column="phone" property="phone" />
+			<result column="qq" property="qq" />
+		</association>
+		<!-- 配置PersonnelInfo类映射 -->
+		<association property="personnelInfo" javaType="com.iaecomption.pojo.PersonnelInfo">
+			<id column="pi_id" property="pi_id" />
+			<result column="account" property="account" />
+			<result column="name" property="name" />
+			<result column="phone" property="phone" />
+		</association>
+	</resultMap>
+
+	<!-- 删除参赛者通知 -->
+	<delete id="delInformByAccount" parameterType="java.lang.String">
+		delete from inform
+		where c_account=#{account}
+	</delete>
+
+	<!-- 插入一条通知 -->
+	<insert id="addInform" parameterType="java.util.Map">
+		insert into inform
+		(c_account,title,content,time,account,type,state) values
+		(#{caccount},#{title},#{content},#{time},#{account},#{type},#{state})
+	</insert>
+
+	<!-- 获取所有通知 -->
+	<select id="getAllInform" resultMap="Inform">
+		select
+		i.in_id,i.title,i.time,i.type,i.state,ci.contacts,pi.`name` from
+		inform i left join contestant_info ci on i.c_account=ci.c_account left
+		join personnel_info pi on i.account=pi.account order by i.time desc
+	</select>
+	
+	<!-- 获取通知类容 -->
+	<select id="getInformContentById" resultMap="Inform" parameterType="java.lang.String">
+	    select content from inform where in_id=#{iid}
+	</select>
+	
+	<!-- 删除通知 -->
+	<delete id="delInformById" parameterType="java.lang.String">
+	    delete from inform where in_id=#{iid}
+	</delete>
+
+</mapper>
